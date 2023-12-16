@@ -4,11 +4,12 @@ import bodyParser from "body-parser";
 const app = express();
 const port  = 3000;
 let posts = [];
+let blog;
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
 app.get("/",(req,res)=>{
-    res.render("index.ejs",posts);
+    res.render("index.ejs",{blogs:blog});
 })
 
 app.get("/addposts",(req,res)=>{
@@ -16,6 +17,7 @@ app.get("/addposts",(req,res)=>{
 })
 app.post("/addposts",(req,res)=>{
     posts.push({title:req.body.title,description:req.body.description});
+    blog = posts;
     res.redirect("/");
     console.log(posts);
 })

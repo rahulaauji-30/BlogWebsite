@@ -1,21 +1,19 @@
 <%- include("partials/header.ejs")  %>
 
 <div class="main">
-<% if(locals.posts){ %>
-    <% posts.forEach(post => {%>
+<% if(locals.blogs){ %>
+    <% blogs.forEach(blog => {%>
          <div class="posts">
-                <b><%= title %></b>
-                <p><%= description.substring(0,200) %> </p>
+                <b><%= blog.title %></b>
+                <p><%= blog.description.substring(0,100) %> </p>
                 <div class="icons">
                     <a href="/edit"> <img class="edit" src="images/feather.svg" alt=""></a>
                     <a href="/delete"><img class="edit" src="images/trash.svg" alt=""></a>
                 </div>
          </div>
-   <% })%>
-<% }else{ %>
-        <div class="no_posts">
-            <a href="/addposts"><i>+</i> New Post</a>
-        </div>
-<% } %>
+   <% })}%>
+    <div class="no_posts">
+        <a href="/addposts"><i>+</i> New Post</a>
+    </div>
 </div>
 <%- include("partials/footer.ejs")  %>
